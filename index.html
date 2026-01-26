@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ximena ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+  width: 85%;
+  max-width: 360px;
+  box-shadow: 0 0 30px rgba(255,105,180,0.35);
+  animation: fadeIn 1.5s ease;
+}
+
+h1 {
+  font-size: 26px;
+  color: #ff6fae;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.numero {
+  font-size: 64px;
+  font-weight: 600;
+  color: #ff9ecf;
+  animation: pulse 1.5s infinite;
+}
+
+.texto {
+  font-size: 16px;
+  margin-top: -10px;
+}
+
+.mensaje {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.12);
+  font-size: 14px;
+  line-height: 1.5;
+  display: none;
+  animation: aparecer 2s ease;
+}
+
+.lock {
+  font-size: 40px;
+  margin-top: 20px;
+  animation: shake 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform: scale(0.9);}
+  to {opacity:1; transform: scale(1);}
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.08);}
+  100% {transform: scale(1);}
+}
+
+@keyframes aparecer {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes shake {
+  0% {transform: rotate(0);}
+  25% {transform: rotate(5deg);}
+  50% {transform: rotate(-5deg);}
+  75% {transform: rotate(5deg);}
+  100% {transform: rotate(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Ximena ❤️</h1>
+  <h2>faltan:</h2>
+  <div class="numero" id="dias">--</div>
+  <div class="texto">días para tu cumpleaños 🎂</div>
+
+  <div class="lock" id="lock">🔒</div>
+
+  <div class="mensaje" id="mensaje">
+    Ximena, feliz cumpleaños mi amor.  
+    Espero que la pases súper bien el día de hoy y quiero que recuerdes siempre que eres súper especial y nunca dejes de ser como eres: con esos hermosos ojos, tu sonrisa tan linda, lo inteligente que eres, lo chévere que eres como persona y así podría seguir todo el día.  
+    <br><br>
+    Espero que sigamos hablando o que ya fuéramos algo más, pero mientras tanto quiero que sepas que siempre te voy a amar y vas a estar en mi corazón 🫶  
+    <br><br>
+    Con mucho cariño, alguien que te ama mucho ❤️
+  </div>
+</div>
+
+<script>
+const hoy = new Date();
+hoy.setHours(0,0,0,0);
+
+const cumple = new Date(hoy.getFullYear(), 3, 26);
+cumple.setHours(0,0,0,0);
+
+if (hoy > cumple) {
+  cumple.setFullYear(hoy.getFullYear() + 1);
+}
+
+const ms = cumple - hoy;
+const dias = Math.ceil(ms / (1000 * 60 * 60 * 24));
+document.getElementById("dias").innerText = dias;
+
+if (hoy.getDate() === 26 && hoy.getMonth() === 3) {
+  document.getElementById("mensaje").style.display = "block";
+  document.getElementById("lock").style.display = "none";
+  document.getElementById("dias").innerText = "🎉";
+}
+</script>
+
+</body>
+</html>
